@@ -1,24 +1,42 @@
-package com.example.springboot.Quote;
+package com.example.springboot.quotes;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table
+public class Quotes{
 
 
-
-public class Quote{
-
+    @Id
+    @SequenceGenerator (
+        name = "quotes_sequence",
+        sequenceName = "quotes_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "quotes_sequence"
+    )
     private Long id;
     private String author;
     private String text;
 
-
-    public Quote (Long id, String author, String text){
+    
+    public Quotes (Long id, String author, String text){
         this.id = id;
         this.author = author;
         this.text = text;      
     }
 
     
-    public Quote(){}
+    public Quotes(){}
 
-    public Quote (String author, String text){
+    public Quotes (String author, String text){
         this.author = author;
         this.text = text;      
     }
