@@ -3,26 +3,41 @@ package com.example.springboot.quotes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "v1/quote")
+@RequestMapping(path = "v1/quotes")
 public class QuotesController {
 
 
-    private final QuotesService quoteService;
+    private final QuotesService quotesService;
 
     @Autowired
-    public QuotesController(QuotesService quoteService) {
-        this.quoteService = quoteService;
+    public QuotesController(QuotesService quotesService) {
+        this.quotesService = quotesService;
     }
 
     @GetMapping
 	public List<Quotes> getQuotes() {
-        return quoteService.getQuotes();
+        return quotesService.getQuotes();
 	}
 
+
+    @PostMapping
+    public void registerNewQuote (@RequestBody Quotes quotes) {
+        quotesService.addNewQuote(quotes);
     
+    }
+
+    @DeleteMapping(path = "{quotesId}")
+    public void deleteQuotes (@PathVariable("quotesId") Long quotesId){
+        quotesService.deleteQuotes(quotesId);
+    }
+
 }

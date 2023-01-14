@@ -10,8 +10,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 public class Quotes{
-
-
+    
     @Id
     @SequenceGenerator (
         name = "quotes_sequence",
