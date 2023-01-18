@@ -21,6 +21,10 @@ public class QuotesService {
         return quotesRepository.findAll();
     }
 
+  //  public Quotes findById(){
+  //   return quotesRepository.findById();
+  //  }
+
     public void addNewQuote(Quotes quotes){
         Optional<Quotes> quotesOptional = quotesRepository.
         findQuotesByAuthor(quotes.getAuthor());
@@ -38,4 +42,7 @@ public class QuotesService {
             }
             quotesRepository.deleteById(quotesId);
     }
+
+
+
 }

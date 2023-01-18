@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "v1/quotes")
+@RequestMapping(path = "api/v1/quotes")
 public class QuotesController {
 
 
@@ -23,10 +23,15 @@ public class QuotesController {
         this.quotesService = quotesService;
     }
 
-    @GetMapping
+    @GetMapping(path = "/getall")
 	public List<Quotes> getQuotes() {
         return quotesService.getQuotes();
 	}
+
+   // @GetMapping( path = "/get/{id}")
+   // public Quotes one (@PathVariable Long quotesId){
+   //     return quotesService.findById();
+   //}
 
 
     @PostMapping
