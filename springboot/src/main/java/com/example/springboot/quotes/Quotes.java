@@ -49,14 +49,15 @@ public class Quotes{
     public String getText(){return text;}
     public void setText(String text) {this.text = text;}
 
-    @Override
-    public String toString () {
-        return "Author{" + 
-                "id=" + id +
-                ", text=" + text +
-                '}';
-    }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", author='" + getAuthor() + "'" +
+            ", text='" + getText() + "'" +
+            "}";
+    }
 
 
 
